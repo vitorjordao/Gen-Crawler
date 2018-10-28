@@ -1,4 +1,4 @@
-package br.com.projetox.crawler.core;
+package br.com.gencrawler.crawler.core;
 
 import java.util.Set;
 

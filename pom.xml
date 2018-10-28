@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.projetox.crawler</groupId>
+	<groupId>br.com.gencrawler.crawler</groupId>
 	<artifactId>gen-crawler</artifactId>
-	<version>1.0.0-BETA</version>
+	<version>1.0.1-BETA</version>
 	<packaging>jar</packaging>
 
 	<name>Gen Crawler</name>

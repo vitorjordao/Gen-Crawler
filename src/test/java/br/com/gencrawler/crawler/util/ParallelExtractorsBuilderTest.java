@@ -1,4 +1,4 @@
-package br.com.projetox.crawler.util;
+package br.com.gencrawler.crawler.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import br.com.projetox.crawler.core.Extractor;
+import br.com.gencrawler.crawler.core.Extractor;
 
 public class ParallelExtractorsBuilderTest {
 	

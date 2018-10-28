@@ -1,8 +1,8 @@
-package br.com.projetox.crawler.util;
+package br.com.gencrawler.crawler.util;
 
 import java.util.List;
 
-import br.com.projetox.crawler.core.Crawler;
+import br.com.gencrawler.crawler.core.Crawler;
 
 public interface ParallelCrawlerBuilder {
 

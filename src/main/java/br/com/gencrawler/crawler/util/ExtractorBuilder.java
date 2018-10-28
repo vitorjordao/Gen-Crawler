@@ -1,6 +1,6 @@
-package br.com.projetox.crawler.util;
+package br.com.gencrawler.crawler.util;
 
-import br.com.projetox.crawler.core.Extractor;
+import br.com.gencrawler.crawler.core.Extractor;
 
 public class ExtractorBuilder implements CrawlerBuilder {
 	private final Extractor ex;

@@ -1,9 +1,9 @@
-package br.com.projetox.crawler.util;
+package br.com.gencrawler.crawler.util;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import br.com.projetox.crawler.core.Extractor;
+import br.com.gencrawler.crawler.core.Extractor;
 
 public class ExtractorBuilderTest {
 	@Test

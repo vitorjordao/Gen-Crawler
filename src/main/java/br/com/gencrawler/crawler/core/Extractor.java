@@ -1,4 +1,4 @@
-package br.com.projetox.crawler.core;
+package br.com.gencrawler.crawler.core;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 
 public final class Extractor implements Crawler {
 	private final Set<String> links;
