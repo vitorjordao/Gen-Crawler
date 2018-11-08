@@ -1,8 +1,9 @@
-package br.com.gencrawler.crawler.util;
+package br.com.gencrawler.crawler.build;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import br.com.gencrawler.crawler.build.ExtractorBuilder;
 import br.com.gencrawler.crawler.core.Extractor;
 
 public class ExtractorBuilderTest {

@@ -1,9 +1,9 @@
 package br.com.gencrawler.crawler.core;
 
 public interface Crawler extends Runnable {
-	
-	void runItems();
-	
-	void runItems(final String linkFinded, final String match);
-	
+
+	void runItem();
+
+	void runItem(final String find, final String match, String url);
+
 }

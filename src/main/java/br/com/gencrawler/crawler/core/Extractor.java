@@ -69,7 +69,7 @@ public final class Extractor implements Crawler {
 	}
 
 	@Override
-	public final void runItems() {
+	public final void runItem() {
 		this.links.parallelStream().forEach(x -> {
 			Document document;
 			try {
@@ -94,10 +94,11 @@ public final class Extractor implements Crawler {
 	}
  
 	@Override
-	public final void runItems(final String linkFinded, final String match) {
+	public final void runItem(final String linkFinded, final String match, final String url) {
 		this.linkFinded = linkFinded;
 		this.match = match;
-		runItems();
+		this.url = url;
+		runItem();
 	}
 
 	public final void writeToConsole() {
@@ -110,7 +111,7 @@ public final class Extractor implements Crawler {
 	@Override
 	public void run() {
 		runPagesLinks();
-		runItems();
+		runItem();
 	}
 
 	public Set<String> getLinks() {

@@ -1,4 +1,4 @@
-package br.com.gencrawler.crawler.util;
+package br.com.gencrawler.crawler.build;
 
 import br.com.gencrawler.crawler.core.Extractor;
 
@@ -46,7 +46,7 @@ public class ExtractorBuilder implements CrawlerBuilder {
 	public Extractor build() {
 		verify();
 		this.ex.runPagesLinks(this.initialPage, this.paginator);
-		this.ex.runItems(this.finderProduct, this.match);
+		this.ex.runItem(this.finderProduct, this.match, this.initialPage);
 		return this.ex;
 	}
 

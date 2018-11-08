@@ -7,15 +7,6 @@ import org.junit.jupiter.api.Test;
 
 public class ExtractorTest {
 
-//	public static void main(final String[] args) {
-//		final long tempoInicio = System.currentTimeMillis();
-//		final Extractor bwc = new Extractor();
-//		bwc.runPagesLinks("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1", "a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-//		bwc.runProducts("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]", "^.*?(R$).*$");
-//		bwc.writeToConsole();
-//		System.out.println("\n\nTempo Total: " + (System.currentTimeMillis() - tempoInicio));
-//	}
-
 	@Test
 	public void testGetRunPagesLinks() {
 		final Extractor bwc = new Extractor();
@@ -30,8 +21,8 @@ public class ExtractorTest {
 		final Extractor bwc = new Extractor();
 		bwc.runPagesLinks("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1",
 				"a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-		bwc.runItems("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]",
-				"^.*?(R$).*$");
+		bwc.runItem("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]",
+				"^.*?(R$).*$", "https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
 		Assertions.assertTrue(bwc.getItems().size() > 0);
 	}
 	
@@ -40,7 +31,7 @@ public class ExtractorTest {
 		final Extractor bwc = new Extractor();
 		Assertions.assertThrows(RuntimeException.class,
 				() -> {
-					bwc.runPagesLinks("falsa url",
+					bwc.runPagesLinks("not work url",
 							"a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
 				});
 	}
