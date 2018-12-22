@@ -32,14 +32,14 @@ public final class Extractor implements Crawler {
 		this.items = products;
 	}
 
-	public Extractor(final String url, final String paginator, final String linkFinded, final String match) {
+	public Extractor(final String... filds) {
 		this.links = new HashSet<>();
 		this.items = new ArrayList<>();
 
-		this.url = url;
-		this.paginator = paginator;
-		this.linkFinded = linkFinded;
-		this.match = match;
+		this.url = filds[0];
+		this.paginator = filds[1];
+		this.linkFinded = filds[2];
+		this.match = filds[3];
 	}
 
 	public final void runPagesLinks() {
@@ -55,9 +55,9 @@ public final class Extractor implements Crawler {
 					runPagesLinks(page.attr("abs:href"), this.paginator);
 				}
 			} catch (final IOException e) {
-				throw new RuntimeException(e.getMessage());
+				throw new RuntimeException(e.getMessage(), e);
 			} catch (final Exception e) {
-				throw new RuntimeException("No expected error - " + e.getMessage());
+				throw new RuntimeException("No expected error - " + e.getMessage(), e);
 			}
 		}
 	}
@@ -86,18 +86,19 @@ public final class Extractor implements Crawler {
 					}
 				}
 			} catch (final IOException e) {
-				throw new RuntimeException(e.getMessage());
+				throw new RuntimeException(e.getMessage(), e);
 			} catch (final Exception e) {
-				throw new RuntimeException("No expected error - " + e.getMessage());
+				throw new RuntimeException("No expected error - " + e.getMessage(), e);
 			}
 		});
 	}
  
 	@Override
-	public final void runItem(final String linkFinded, final String match, final String url) {
-		this.linkFinded = linkFinded;
-		this.match = match;
-		this.url = url;
+	public final void runItem(final String... filds) {
+		
+		this.url = filds[2];
+		this.linkFinded = filds[0];
+		this.match = filds[1];
 		runItem();
 	}
 
@@ -121,21 +122,4 @@ public final class Extractor implements Crawler {
 	public List<List<String>> getItems() {
 		return Collections.unmodifiableList(this.items);
 	}
-
-	public void setUrl(final String url) {
-		this.url = url;
-	}
-
-	public void setPaginator(final String paginator) {
-		this.paginator = paginator;
-	}
-
-	public void setLinkFinded(final String linkFinded) {
-		this.linkFinded = linkFinded;
-	}
-
-	public void setMatch(final String match) {
-		this.match = match;
-	}
-
 }

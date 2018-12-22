@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: vjor
-Build-Jdk: 11.0.1
+Built-By: vitor
+Build-Jdk: 10.0.2
 Created-By: Maven Integration for Eclipse
 

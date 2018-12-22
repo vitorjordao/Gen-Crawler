@@ -10,8 +10,8 @@ public class CollectorBuilderTest {
 	public void buildCrawler() {
 		final CollectorBuilder cb = new CollectorBuilder();
 		final Collector crawler = cb
-				.setInitial("https://www.casa.center/mesa-posta/sousplat/sousplat-de-plastico-com-detalhes-na-borda-prata")
-				.setFinder("span[id^=\"variacaoPreco\"]")
+				.setInitial("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p")
+				.setFinder("strong[class^=\"skuPrice\"]")
 				.setMatch("^.*?().*$").build();
 		Assertions.assertTrue(crawler.getItems().size() > 0);
 	}
@@ -20,7 +20,7 @@ public class CollectorBuilderTest {
 	public void errorCrawlerBuild() {
 		final CollectorBuilder cb = new CollectorBuilder();
 		Assertions.assertThrows(RuntimeException.class,
-				() -> cb.setInitial("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1")
+				() -> cb.setInitial("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p")
 						.setMatch("^.*?(R$).*$").build());
 	}
 }

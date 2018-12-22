@@ -17,16 +17,16 @@ public class ParallelCollectorsBuilderTest {
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
 		
-		initialPageLinks.add("https://www.casa.center/mesa-posta/sousplat/sousplat-de-plastico-com-detalhes-na-borda-prata");
-		findersTags.add("span[id^=\"variacaoPreco\"]");
+		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
+		findersTags.add("strong[class^=\"skuPrice\"]");
 		matchs.add("^.*?().*$");
 
-		initialPageLinks.add("https://www.casa.center/mesa-posta/sousplat/sousplat-de-plastico-com-detalhes-na-borda-prata");
-		findersTags.add("span[id^=\"variacaoPreco\"]");
+		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
+		findersTags.add("strong[class^=\"skuPrice\"]");
 		matchs.add("^.*?().*$");
 		
-		initialPageLinks.add("https://www.casa.center/mesa-posta/sousplat/sousplat-de-plastico-com-detalhes-na-borda-prata");
-		findersTags.add("span[id^=\"variacaoPreco\"]");
+		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
+		findersTags.add("strong[class^=\"skuPrice\"]");
 		matchs.add("^.*?().*$");
 		
 		final List<Collector> crawlers = pcb
@@ -45,15 +45,15 @@ public class ParallelCollectorsBuilderTest {
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
 		
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
-		findersTags.add("span[id^=\"variacaoPreco\"]");
+		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
+		findersTags.add("strong[class^=\"skuPrice\"]");
 		matchs.add("^.*?().*$");
 
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
+		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
 		matchs.add("^.*?().*$");
 		
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
-		findersTags.add("span[id^=\"variacaoPreco\"]");
+		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
+		findersTags.add("strong[class^=\"skuPrice\"]");
 		matchs.add("^.*?().*$");
 		
 		Assertions.assertThrows(RuntimeException.class,

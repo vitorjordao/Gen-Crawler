@@ -18,20 +18,20 @@ public class ParallelExtractorsBuilderTest {
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
 
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
-		paginatorsLinks.add("a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-		findersTags.add("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]");
-		matchs.add("^.*?(R$).*$");
+		initialPageLinks.add("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey");
+		paginatorsLinks.add("a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]");
+		findersTags.add("div[class^=\"product-grid-item\"] a[class^=\"card-product-url\"]");
+		matchs.add("^.*?().*$");
 
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
-		paginatorsLinks.add("a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-		findersTags.add("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]");
-		matchs.add("^.*?(R$).*$");
+		initialPageLinks.add("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey");
+		paginatorsLinks.add("a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]");
+		findersTags.add("div[class^=\"product-grid-item\"] a[class^=\"card-product-url\"]");
+		matchs.add("^.*?().*$");
 
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
-		paginatorsLinks.add("a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-		findersTags.add("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]");
-		matchs.add("^.*?(R$).*$");
+		initialPageLinks.add("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey");
+		paginatorsLinks.add("a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]");
+		findersTags.add("div[class^=\"product-grid-item\"] a[class^=\"card-product-url\"]");
+		matchs.add("^.*?().*$");
 
 		final List<Extractor> crawlers = pcb.addAllUrl(initialPageLinks).addAllPaginators(paginatorsLinks)
 				.addAllFinder(findersTags).addAllMatchs(matchs).build();
@@ -49,19 +49,19 @@ public class ParallelExtractorsBuilderTest {
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
 
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
-		paginatorsLinks.add("a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-		findersTags.add("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]");
-		matchs.add("^.*?(R$).*$");
+		initialPageLinks.add("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey");
+		paginatorsLinks.add("a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]");
+		findersTags.add("div[class^=\"product-grid-item\"] a[class^=\"card-product-url\"]");
+		matchs.add("^.*?().*$");
 
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
-		paginatorsLinks.add("a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-		matchs.add("^.*?(R$).*$");
+		initialPageLinks.add("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey");
+		paginatorsLinks.add("a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]");
+		matchs.add("^.*?().*$");
 
-		initialPageLinks.add("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
-		paginatorsLinks.add("a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-		findersTags.add("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]");
-		matchs.add("^.*?(R$).*$");
+		initialPageLinks.add("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey");
+		paginatorsLinks.add("a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]");
+		findersTags.add("div[class^=\"product-grid-item\"] a[class^=\"card-product-url\"]");
+		matchs.add("^.*?().*$");
 
 		Assertions.assertThrows(RuntimeException.class, () -> pcb.addAllUrl(initialPageLinks)
 				.addAllPaginators(paginatorsLinks).addAllFinder(findersTags).addAllMatchs(matchs).build());

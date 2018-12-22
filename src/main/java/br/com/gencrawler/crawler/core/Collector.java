@@ -20,17 +20,17 @@ public final class Collector implements Crawler {
 	public Collector() {
 		this.items = new ArrayList<>();
 	}
-
-	public Collector(final List<String> products) {
-		this.items = products;
+	
+	public Collector(final List<String> items) {
+		this.items = items;
 	}
 
-	public Collector(final String url, final String find, final String match) {
+	public Collector(final String... filds) {
 		this.items = new ArrayList<>();
 
-		this.url = url;
-		this.find = find;
-		this.match = match;
+		this.url = filds[0];
+		this.find = filds[1];
+		this.match = filds[2];
 	}
 
 	@Override
@@ -48,17 +48,17 @@ public final class Collector implements Crawler {
 				}
 			}
 		} catch (final IOException e) {
-			throw new RuntimeException(e.getMessage());
+			throw new RuntimeException(e.getMessage(), e);
 		} catch (final Exception e) {
-			throw new RuntimeException("No expected error - " + e.getMessage());
+			throw new RuntimeException("No expected error - " + e.getMessage(), e);
 		}
 	}
 
 	@Override
-	public final void runItem(final String find, final String match, final String url) {
-		this.find = find;
-		this.match = match;
-		this.url = url;
+	public final void runItem(final String... filds) {
+		this.find = filds[0];
+		this.match = filds[1];
+		this.url = filds[2];
 		runItem();
 	}
 
@@ -75,18 +75,7 @@ public final class Collector implements Crawler {
 	}
 
 	public List<String> getItems() {
+		
 		return Collections.unmodifiableList(this.items);
-	}
-
-	public void setUrl(final String url) {
-		this.url = url;
-	}
-
-	public void setFind(final String find) {
-		this.find = find;
-	}
-
-	public void setMatch(final String match) {
-		this.match = match;
 	}
 }

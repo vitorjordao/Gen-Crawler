@@ -3,7 +3,6 @@ package br.com.gencrawler.crawler.build;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import br.com.gencrawler.crawler.build.ExtractorBuilder;
 import br.com.gencrawler.crawler.core.Extractor;
 
 public class ExtractorBuilderTest {
@@ -11,10 +10,10 @@ public class ExtractorBuilderTest {
 	public void buildCrawler() {
 		final ExtractorBuilder cb = new ExtractorBuilder();
 		final Extractor crawler = cb
-				.setInitial("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1")
-				.setPaginator("a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]")
-				.setFinder("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]")
-				.setMatch("^.*?(R$).*$").build();
+				.setInitial("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey")
+				.setPaginator("a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]")
+				.setFinder("div[class^=\"product-grid-item\"] a[class^=\"card-product-url\"]")
+				.setMatch("^.*?().*$").build();
 		Assertions.assertTrue(crawler.getLinks().size() > 0);
 		Assertions.assertTrue(crawler.getItems().size() > 0);
 	}
@@ -23,9 +22,9 @@ public class ExtractorBuilderTest {
 	public void errorCrawlerBuild() {
 		final ExtractorBuilder cb = new ExtractorBuilder();
 		Assertions.assertThrows(RuntimeException.class,
-				() -> cb.setInitial("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1")
+				() -> cb.setInitial("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey")
 						.setPaginator(
-								"a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]")
-						.setMatch("^.*?(R$).*$").build());
+								"a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]")
+						.setMatch("^.*?().*$").build());
 	}
 }

@@ -10,8 +10,8 @@ public class ExtractorTest {
 	@Test
 	public void testGetRunPagesLinks() {
 		final Extractor bwc = new Extractor();
-		bwc.runPagesLinks("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1",
-				"a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
+		bwc.runPagesLinks("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey",
+				"a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]");
 		final Set<String> links = bwc.getLinks();
 		Assertions.assertTrue(links.size() > 0);
 	}
@@ -19,10 +19,10 @@ public class ExtractorTest {
 	@Test
 	public void testAllCrawler() {
 		final Extractor bwc = new Extractor();
-		bwc.runPagesLinks("https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1",
-				"a[href^=\"https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=\"]");
-		bwc.runItem("ul li div[class^=\"product\"] a[data-tray-tst^=\"vitrine_produto_link_imagem\"]",
-				"^.*?(R$).*$", "https://www.casa.center/loja/catalogo.php?loja=577838&categoria=132&pg=1");
+		bwc.runPagesLinks("https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey",
+				"a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]");
+		bwc.runItem("div[class^=\"product-grid-item\"] a[class^=\"card-product-url\"]",
+				"^.*?().*$", "https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey");
 		Assertions.assertTrue(bwc.getItems().size() > 0);
 	}
 	

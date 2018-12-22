@@ -8,9 +8,10 @@ public class CollectorTest {
 	@Test
 	public void testAllCrawler() {
 		final Collector bwc = new Collector();
-		bwc.runItem("span[id^=\"variacaoPreco\"]", "^.*?().*$",
-				"https://www.casa.center/mesa-posta/sousplat/sousplat-de-plastico-com-detalhes-na-borda-prata");
+		bwc.runItem("strong[class^=\"skuPrice\"]", "^.*?().*$",
+				"https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
 		bwc.writeToConsole();
+		
 		Assertions.assertTrue(bwc.getItems().size() > 0);
 	}
 
@@ -18,7 +19,7 @@ public class CollectorTest {
 	public void errorOnURL() {
 		final Collector bwc = new Collector();
 		Assertions.assertThrows(RuntimeException.class, () -> {
-			bwc.runItem("div[id^=\"conteudo-principal\"]", "^.*?().*$",
+			bwc.runItem("strong[class^=\"skuPrice\"]", "^.*?().*$",
 					"");
 		});
 	}

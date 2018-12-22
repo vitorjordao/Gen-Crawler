@@ -4,6 +4,6 @@ public interface Crawler extends Runnable {
 
 	void runItem();
 
-	void runItem(final String find, final String match, String url);
+	void runItem(String... filds);
 
 }
