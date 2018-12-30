@@ -13,7 +13,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-public final class Extractor implements Crawler {
+public final class SimpleExtractor implements Crawler {
 	private final Set<String> links;
 	private final List<List<String>> items;
 
@@ -22,17 +22,17 @@ public final class Extractor implements Crawler {
 	private String linkFinded;
 	private String match;
 
-	public Extractor() {
+	public SimpleExtractor() {
 		this.links = new HashSet<>();
 		this.items = new ArrayList<>();
 	}
 
-	public Extractor(final Set<String> links, final List<List<String>> products) {
+	public SimpleExtractor(final Set<String> links, final List<List<String>> products) {
 		this.links = links;
 		this.items = products;
 	}
 
-	public Extractor(final String... filds) {
+	public SimpleExtractor(final String... filds) {
 		this.links = new HashSet<>();
 		this.items = new ArrayList<>();
 

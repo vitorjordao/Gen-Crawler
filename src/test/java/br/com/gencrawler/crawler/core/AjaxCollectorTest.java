@@ -1,14 +1,20 @@
 package br.com.gencrawler.crawler.core;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class CollectorTest {
+public class AjaxCollectorTest {
 
+	@BeforeAll
+	public static void systemVariable() {
+		System.setProperty("webdriver.gecko.driver", /*Here add your path -> */"/home/vitor/path/geckodriver");
+	}
+	
 	@Test
 	public void testAllCrawler() {
-		final Collector bwc = new Collector();
-		bwc.runItem("strong[class^=\"skuPrice\"]", "^.*?().*$",
+		final AjaxCollector bwc = new AjaxCollector();
+		bwc.runItem("bf-price__best", "class",
 				"https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
 		bwc.writeToConsole();
 		
@@ -17,9 +23,9 @@ public class CollectorTest {
 
 	@Test
 	public void errorOnURL() {
-		final Collector bwc = new Collector();
+		final AjaxCollector bwc = new AjaxCollector();
 		Assertions.assertThrows(RuntimeException.class, () -> {
-			bwc.runItem("strong[class^=\"skuPrice\"]", "^.*?().*$",
+			bwc.runItem("bf-price__best", "class",
 					"");
 		});
 	}

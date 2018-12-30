@@ -1,0 +1,97 @@
+package br.com.gencrawler.crawler.core;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public final class AjaxCollector implements Collector {
+	private final List<String> items;
+
+	private String url;
+	private String find;
+	private String match;
+
+	private final WebDriver driver;
+
+	public AjaxCollector() {
+		this.items = new ArrayList<>();
+		this.driver = new FirefoxDriver();
+	}
+
+	public AjaxCollector(final WebDriver driver) {
+		this.items = new ArrayList<>();
+		this.driver = driver;
+	}
+	
+	public AjaxCollector(final List<String> items) {
+		this.items = items;
+		this.driver = new FirefoxDriver();
+	}
+
+	public AjaxCollector(final String... filds) {
+		this.items = new ArrayList<>();
+		this.driver = new FirefoxDriver();
+
+		this.url = filds[0];
+		this.find = filds[1];
+		this.match = filds[2];
+	}
+
+	public void openBrowser() {
+		this.driver.get(this.url);
+	}
+	
+	public void closeBrowser() {
+		this.driver.close();
+	}
+	
+	public void runBrowser() {
+		List<WebElement> elements;
+		this.driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		if(this.match.toLowerCase().contains("class"))
+			elements = this.driver.findElements(By.className(this.find));
+		else
+			elements = this.driver.findElements(By.id(this.find));
+		
+		elements.forEach(element -> this.items.add(element.getText()));
+	}
+
+	@Override
+	public final void runItem() {
+		openBrowser();
+		runBrowser();
+		closeBrowser();
+	}
+
+	@Override
+	public final void runItem(final String... filds) {
+		this.find = filds[0];
+		this.match = filds[1];
+		this.url = filds[2];
+		runItem();
+	}
+
+	public final void writeToConsole() {
+		this.items.parallelStream().forEach(a -> {
+			System.out.println("----");
+			System.out.println(a);
+		});
+	}
+
+	@Override
+	public void run() {
+		runItem();
+	}
+
+	@Override
+	public List<String> getItems() { 
+		
+		return Collections.unmodifiableList(this.items);
+	}
+}

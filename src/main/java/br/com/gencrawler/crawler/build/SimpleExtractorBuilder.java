@@ -1,37 +1,37 @@
 package br.com.gencrawler.crawler.build;
 
-import br.com.gencrawler.crawler.core.Extractor;
+import br.com.gencrawler.crawler.core.SimpleExtractor;
 
-public class ExtractorBuilder implements CrawlerBuilder {
-	private final Extractor ex;
+public class SimpleExtractorBuilder implements CrawlerBuilder {
+	private final SimpleExtractor ex;
 
 	private String initialPage;
 	private String paginator;
 	private String finderProduct;
 	private String match;
 
-	public ExtractorBuilder() {
-		this.ex = new Extractor();
+	public SimpleExtractorBuilder() {
+		this.ex = new SimpleExtractor();
 	}
 
-	public ExtractorBuilder setInitial(final String page) {
+	public SimpleExtractorBuilder setInitial(final String page) {
 		this.initialPage = page;
 		return this;
 	}
 
-	public ExtractorBuilder setPaginator(final String paginator) {
+	public SimpleExtractorBuilder setPaginator(final String paginator) {
 		this.paginator = paginator;
 		return this;
 	}
 
 	@Override
-	public ExtractorBuilder setFinder(final String product) {
+	public SimpleExtractorBuilder setFinder(final String product) {
 		this.finderProduct = product;
 		return this;
 	}
 
 	@Override
-	public ExtractorBuilder setMatch(final String match) {
+	public SimpleExtractorBuilder setMatch(final String match) {
 		this.match = match;
 		return this;
 	}
@@ -43,7 +43,7 @@ public class ExtractorBuilder implements CrawlerBuilder {
 	}
 
 	@Override
-	public Extractor build() {
+	public SimpleExtractor build() {
 		verify();
 		this.ex.runPagesLinks(this.initialPage, this.paginator);
 		this.ex.runItem(this.finderProduct, this.match, this.initialPage);

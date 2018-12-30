@@ -6,13 +6,13 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import br.com.gencrawler.crawler.core.Collector;
+import br.com.gencrawler.crawler.core.SimpleCollector;
 
-public class ParallelCollectorsBuilderTest {
+public class ParallelSimpleCollectorsBuilderTest {
 	
 	@Test
 	public void buildCrawler() {
-		final ParallelCollectorsBuilder pcb = new ParallelCollectorsBuilder();
+		final ParallelSimpleCollectorsBuilder pcb = new ParallelSimpleCollectorsBuilder();
 		final List<String> initialPageLinks = new ArrayList<>();
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
@@ -29,7 +29,7 @@ public class ParallelCollectorsBuilderTest {
 		findersTags.add("strong[class^=\"skuPrice\"]");
 		matchs.add("^.*?().*$");
 		
-		final List<Collector> crawlers = pcb
+		final List<SimpleCollector> crawlers = pcb
 				.addAllUrl(initialPageLinks)
 				.addAllFinder(findersTags)
 				.addAllMatchs(matchs).build();
@@ -39,7 +39,7 @@ public class ParallelCollectorsBuilderTest {
 
 	@Test
 	public void errorCrawlerBuild() {
-		final ParallelCollectorsBuilder pcb = new ParallelCollectorsBuilder();
+		final ParallelSimpleCollectorsBuilder pcb = new ParallelSimpleCollectorsBuilder();
 		
 		final List<String> initialPageLinks = new ArrayList<>();
 		final List<String> findersTags = new ArrayList<>();

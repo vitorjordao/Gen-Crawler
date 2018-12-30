@@ -6,13 +6,13 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import br.com.gencrawler.crawler.core.Extractor;
+import br.com.gencrawler.crawler.core.SimpleExtractor;
 
-public class ParallelExtractorsBuilderTest {
+public class ParallelSimpleExtractorsBuilderTest {
 
 	@Test
 	public void buildCrawler() {
-		final ParallelExtractorsBuilder pcb = new ParallelExtractorsBuilder();
+		final ParallelSimpleExtractorsBuilder pcb = new ParallelSimpleExtractorsBuilder();
 		final List<String> initialPageLinks = new ArrayList<>();
 		final List<String> paginatorsLinks = new ArrayList<>();
 		final List<String> findersTags = new ArrayList<>();
@@ -33,7 +33,7 @@ public class ParallelExtractorsBuilderTest {
 		findersTags.add("div[class^=\"product-grid-item\"] a[class^=\"card-product-url\"]");
 		matchs.add("^.*?().*$");
 
-		final List<Extractor> crawlers = pcb.addAllUrl(initialPageLinks).addAllPaginators(paginatorsLinks)
+		final List<SimpleExtractor> crawlers = pcb.addAllUrl(initialPageLinks).addAllPaginators(paginatorsLinks)
 				.addAllFinder(findersTags).addAllMatchs(matchs).build();
 		Assertions.assertTrue(crawlers.size() > 0);
 		Assertions.assertTrue(crawlers.get(0).getLinks().size() > 0);
@@ -42,7 +42,7 @@ public class ParallelExtractorsBuilderTest {
 
 	@Test
 	public void errorCrawlerBuild() {
-		final ParallelExtractorsBuilder pcb = new ParallelExtractorsBuilder();
+		final ParallelSimpleExtractorsBuilder pcb = new ParallelSimpleExtractorsBuilder();
 
 		final List<String> initialPageLinks = new ArrayList<>();
 		final List<String> paginatorsLinks = new ArrayList<>();
