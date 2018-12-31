@@ -2,6 +2,8 @@ package br.com.gencrawler.crawler.parallelbuild;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import br.com.gencrawler.crawler.core.Crawler;
 import br.com.gencrawler.crawler.core.SimpleCollector;
@@ -61,20 +63,14 @@ public class ParallelSimpleCollectorsBuilder implements ParallelCollectorsBuilde
 	@SuppressWarnings("unchecked")
 	public <T extends Crawler> List<T> build() {
 		verify();
-		Thread thread = null;
+		final ExecutorService executor = Executors.newCachedThreadPool();
 		for (int i = 0; i < this.url.size(); i++) {
 			this.crawlers.add(new SimpleCollector(this.url.get(i), this.finderProducts.get(i), this.matchs.get(i)));
-			thread = new Thread(this.crawlers.get(i), i + "-");
-			thread.run();
+			executor.submit(this.crawlers.get(i));
 		}
-		synchronized (thread) {
-			try {
-				thread.join();
-			} catch (final InterruptedException e) {
-				e.printStackTrace();
-			}
-			return (List<T>) this.crawlers;
-		}
+		executor.shutdown();
+		while(!executor.isTerminated()) {}
+		return (List<T>) this.crawlers;
+		
 	}
-
 }

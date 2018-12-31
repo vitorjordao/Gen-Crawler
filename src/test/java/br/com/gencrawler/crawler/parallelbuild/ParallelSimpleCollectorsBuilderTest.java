@@ -17,16 +17,16 @@ public class ParallelSimpleCollectorsBuilderTest {
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
 		
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("strong[class^=\"skuPrice\"]");
+		initialPageLinks.add("https://www.americanas.com.br/produto/130177939/liquidificador-philips-walita-problend-2136-0-com-jarra-de-vidro-branco-2l-e-5-velocidades-800w?chave=prf_hm_0_oh_4_txar_00&hl=lower&pfm_carac=1&pfm_index=3&pfm_page=home&pfm_pos=maintop4&pfm_type=vit_spacey&voltagem=220V");
+		findersTags.add("p[class^=\"sales-price\"]");
 		matchs.add("^.*?().*$");
 
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("strong[class^=\"skuPrice\"]");
+		initialPageLinks.add("https://www.americanas.com.br/produto/130177939/liquidificador-philips-walita-problend-2136-0-com-jarra-de-vidro-branco-2l-e-5-velocidades-800w?chave=prf_hm_0_oh_4_txar_00&hl=lower&pfm_carac=1&pfm_index=3&pfm_page=home&pfm_pos=maintop4&pfm_type=vit_spacey&voltagem=220V");
+		findersTags.add("p[class^=\"sales-price\"]");
 		matchs.add("^.*?().*$");
 		
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("strong[class^=\"skuPrice\"]");
+		initialPageLinks.add("https://www.americanas.com.br/produto/130177939/liquidificador-philips-walita-problend-2136-0-com-jarra-de-vidro-branco-2l-e-5-velocidades-800w?chave=prf_hm_0_oh_4_txar_00&hl=lower&pfm_carac=1&pfm_index=3&pfm_page=home&pfm_pos=maintop4&pfm_type=vit_spacey&voltagem=220V");
+		findersTags.add("p[class^=\"sales-price\"]");
 		matchs.add("^.*?().*$");
 		
 		final List<SimpleCollector> crawlers = pcb
@@ -45,15 +45,15 @@ public class ParallelSimpleCollectorsBuilderTest {
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
 		
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("strong[class^=\"skuPrice\"]");
+		initialPageLinks.add("https://www.americanas.com.br/produto/130177939/liquidificador-philips-walita-problend-2136-0-com-jarra-de-vidro-branco-2l-e-5-velocidades-800w?chave=prf_hm_0_oh_4_txar_00&hl=lower&pfm_carac=1&pfm_index=3&pfm_page=home&pfm_pos=maintop4&pfm_type=vit_spacey&voltagem=220V");
+		findersTags.add("p[class^=\"sales-price\"]");
 		matchs.add("^.*?().*$");
 
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
+		initialPageLinks.add("https://www.americanas.com.br/produto/130177939/liquidificador-philips-walita-problend-2136-0-com-jarra-de-vidro-branco-2l-e-5-velocidades-800w?chave=prf_hm_0_oh_4_txar_00&hl=lower&pfm_carac=1&pfm_index=3&pfm_page=home&pfm_pos=maintop4&pfm_type=vit_spacey&voltagem=220V");
 		matchs.add("^.*?().*$");
 		
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("strong[class^=\"skuPrice\"]");
+		initialPageLinks.add("https://www.americanas.com.br/produto/130177939/liquidificador-philips-walita-problend-2136-0-com-jarra-de-vidro-branco-2l-e-5-velocidades-800w?chave=prf_hm_0_oh_4_txar_00&hl=lower&pfm_carac=1&pfm_index=3&pfm_page=home&pfm_pos=maintop4&pfm_type=vit_spacey&voltagem=220V");
+		findersTags.add("p[class^=\"sales-price\"]");
 		matchs.add("^.*?().*$");
 		
 		Assertions.assertThrows(RuntimeException.class,
