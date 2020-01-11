@@ -3,7 +3,7 @@ package br.com.gencrawler.crawler.build;
 import br.com.gencrawler.crawler.core.SimpleExtractor;
 
 public class SimpleExtractorBuilder implements CrawlerBuilder {
-	private final SimpleExtractor ex;
+	private final SimpleExtractor extractor;
 
 	private String initialPage;
 	private String paginator;
@@ -11,7 +11,7 @@ public class SimpleExtractorBuilder implements CrawlerBuilder {
 	private String match;
 
 	public SimpleExtractorBuilder() {
-		this.ex = new SimpleExtractor();
+		this.extractor = new SimpleExtractor();
 	}
 
 	public SimpleExtractorBuilder setInitial(final String page) {
@@ -38,16 +38,17 @@ public class SimpleExtractorBuilder implements CrawlerBuilder {
 
 	@Override
 	public void verify() {
-		if (this.initialPage == null || this.paginator == null || this.finderProduct == null || this.match == null)
+		if (this.initialPage == null || this.paginator == null || this.finderProduct == null || this.match == null
+			|| this.initialPage.equals("") || this.paginator.equals("") || this.finderProduct.equals("") || this.match.equals(""))
 			throw new RuntimeException("Peat all data");
 	}
 
 	@Override
 	public SimpleExtractor build() {
 		verify();
-		this.ex.runPagesLinks(this.initialPage, this.paginator);
-		this.ex.runItem(this.finderProduct, this.match, this.initialPage);
-		return this.ex;
+		this.extractor.runPagesLinks(this.initialPage, this.paginator);
+		this.extractor.runItem(this.finderProduct, this.match, this.initialPage);
+		return this.extractor;
 	}
 
 }

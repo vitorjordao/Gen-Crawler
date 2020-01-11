@@ -33,8 +33,15 @@ public final class SimpleCollector implements Collector {
 		this.match = filds[2];
 	}
 
+	public void verify() {
+		if (this.url == null || this.find == null || this.match == null
+			|| this.url.equals("") || this.find.equals("") || this.match.equals(""))
+			throw new RuntimeException("Peat all data");
+	}
+
 	@Override
 	public final void runItem() {
+		verify();
 		Document document;
 		try {
 			document = Jsoup.connect(this.url).get();

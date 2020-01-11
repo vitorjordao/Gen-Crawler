@@ -44,8 +44,9 @@ public final class AjaxCollector implements Collector {
 	}
 
 	public void openBrowser() {
-		if(this.url.equals("") || this.url == null)
-			throw new RuntimeException("No no url error");
+		if(this.url == null || this.find == null || this.match == null
+			|| this.url.equals("") || this.find.equals("") || this.match.equals(""))
+			throw new RuntimeException("Peat all data");
 		this.driver.get(this.url);
 	}
 	
@@ -56,11 +57,12 @@ public final class AjaxCollector implements Collector {
 	public void runBrowser() {
 		List<WebElement> elements;
 		this.driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		if(this.match.toLowerCase().contains("class"))
+		if(this.match.toLowerCase().equals("class"))
 			elements = this.driver.findElements(By.className(this.find));
-		else
+		else if(this.match.toLowerCase().equals("id"))
 			elements = this.driver.findElements(By.id(this.find));
-		
+		else
+			throw new RuntimeException("Invalid match error");
 		elements.forEach(element -> this.items.add(element.getText()));
 	}
 

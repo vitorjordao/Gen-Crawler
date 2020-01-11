@@ -42,6 +42,12 @@ public final class SimpleExtractor implements Crawler {
 		this.match = filds[3];
 	}
 
+	public void verify() {
+		if (this.url == null || this.paginator == null || this.linkFinded == null || this.match == null
+			|| this.url.equals("") || this.paginator.equals("") || this.linkFinded.equals("") || this.match.equals(""))
+			throw new RuntimeException("Peat all data");
+	}
+
 	public final void runPagesLinks() {
 		if (!this.links.contains(this.url)) {
 			try {
@@ -70,6 +76,7 @@ public final class SimpleExtractor implements Crawler {
 
 	@Override
 	public final void runItem() {
+		verify();
 		this.links.parallelStream().forEach(x -> {
 			Document document;
 			try {

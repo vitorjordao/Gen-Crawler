@@ -3,14 +3,14 @@ package br.com.gencrawler.crawler.build;
 import br.com.gencrawler.crawler.core.AjaxCollector;
 
 public class AjaxCollectorBuilder implements CollectorBuilder {
-	private final AjaxCollector ex;
+	private final AjaxCollector collector;
 
 	private String initialPage;
 	private String finderProduct;
 	private String match;
 
 	public AjaxCollectorBuilder() {
-		this.ex = new AjaxCollector();
+		this.collector = new AjaxCollector();
 	} 
 
 	@Override
@@ -33,15 +33,16 @@ public class AjaxCollectorBuilder implements CollectorBuilder {
 
 	@Override
 	public void verify() {
-		if (this.initialPage == null || this.finderProduct == null || this.match == null)
+		if (this.initialPage == null || this.finderProduct == null || this.match == null
+			|| this.initialPage.equals("") || this.finderProduct.equals("") || this.match.equals(""))
 			throw new RuntimeException("Peat all data");
 	}
 
 	@Override
 	public AjaxCollector build() {
 		verify();
-		this.ex.runItem(this.finderProduct, this.match, this.initialPage);
-		return this.ex;
+		this.collector.runItem(this.finderProduct, this.match, this.initialPage);
+		return this.collector;
 	}
 
 }
