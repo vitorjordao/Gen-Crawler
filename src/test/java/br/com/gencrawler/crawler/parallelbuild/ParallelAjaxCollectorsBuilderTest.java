@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import br.com.gencrawler.crawler.Helper;
 import br.com.gencrawler.crawler.core.AjaxCollector;
 
 public class ParallelAjaxCollectorsBuilderTest {
+
+	private Helper helper = new Helper();
 	
 	@BeforeAll
 	public static void systemVariable() {
-		System.setProperty("webdriver.gecko.driver", /*Here add your path -> */"/home/vitor/path/geckodriver");
+		new Helper().setProperty();
 	}
 	
 	@Test
@@ -23,16 +26,16 @@ public class ParallelAjaxCollectorsBuilderTest {
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
 		
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("bf-price__best");
+		initialPageLinks.add(helper.getAjaxUrl());
+		findersTags.add(helper.getAjaxFinder());
 		matchs.add("class");
 
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("bf-price__best");
+		initialPageLinks.add(helper.getAjaxUrl());
+		findersTags.add(helper.getAjaxFinder());
 		matchs.add("class");
 		
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("bf-price__best");
+		initialPageLinks.add(helper.getAjaxUrl());
+		findersTags.add(helper.getAjaxFinder());
 		matchs.add("class");
 		
 		final List<AjaxCollector> crawlers = pcb
@@ -51,15 +54,15 @@ public class ParallelAjaxCollectorsBuilderTest {
 		final List<String> findersTags = new ArrayList<>();
 		final List<String> matchs = new ArrayList<>();
 		
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("bf-price__best");
+		initialPageLinks.add(helper.getAjaxUrl());
+		findersTags.add(helper.getAjaxFinder());
 		matchs.add("class");
 
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
+		initialPageLinks.add(helper.getAjaxUrl());
 		matchs.add("class");
 		
-		initialPageLinks.add("https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
-		findersTags.add("bf-price__best");
+		initialPageLinks.add(helper.getAjaxUrl());
+		findersTags.add(helper.getAjaxFinder());
 		matchs.add("class");
 		
 		Assertions.assertThrows(RuntimeException.class,

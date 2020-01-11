@@ -4,18 +4,22 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import br.com.gencrawler.crawler.Helper;
+
 public class AjaxCollectorTest {
+
+	private Helper helper = new Helper();
 
 	@BeforeAll
 	public static void systemVariable() {
-		System.setProperty("webdriver.gecko.driver", /*Here add your path -> */"/home/vitor/path/geckodriver");
+		new Helper().setProperty();
 	}
 	
 	@Test
 	public void testAllCrawler() {
 		final AjaxCollector bwc = new AjaxCollector();
-		bwc.runItem("bf-price__best", "class",
-				"https://www.casa.center/prato-de-sobremesa-com-estampa-de-flores-e-borda-bambu-magnolia/p");
+		bwc.runItem(helper.getAjaxFinder(), "class",
+				helper.getAjaxUrl());
 		bwc.writeToConsole();
 		
 		Assertions.assertTrue(bwc.getItems().size() > 0);
@@ -25,7 +29,7 @@ public class AjaxCollectorTest {
 	public void errorOnURL() {
 		final AjaxCollector bwc = new AjaxCollector();
 		Assertions.assertThrows(RuntimeException.class, () -> {
-			bwc.runItem("bf-price__best", "class",
+			bwc.runItem(helper.getAjaxFinder(), "class",
 					"");
 		});
 	}

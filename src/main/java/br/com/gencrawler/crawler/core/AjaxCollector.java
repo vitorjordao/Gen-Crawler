@@ -44,6 +44,8 @@ public final class AjaxCollector implements Collector {
 	}
 
 	public void openBrowser() {
+		if(this.url.equals("") || this.url == null)
+			throw new RuntimeException("No no url error");
 		this.driver.get(this.url);
 	}
 	
