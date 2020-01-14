@@ -22,19 +22,16 @@ public final class AjaxCollector implements Collector {
 	public AjaxCollector() {
 		this.items = new ArrayList<>();
 		this.driver = new FirefoxDriver();
-		new Thread(this);
 	}
 
 	public AjaxCollector(final WebDriver driver) {
 		this.items = new ArrayList<>();
 		this.driver = driver;
-		new Thread(this);
 	}
 	
 	public AjaxCollector(final List<String> items) {
 		this.items = items;
 		this.driver = new FirefoxDriver();
-		new Thread(this);
 	}
 
 	public AjaxCollector(final String... filds) {
@@ -44,7 +41,6 @@ public final class AjaxCollector implements Collector {
 		this.url = filds[0];
 		this.find = filds[1];
 		this.match = filds[2];
-		new Thread(this);
 	}
 
 	public void openBrowser() {

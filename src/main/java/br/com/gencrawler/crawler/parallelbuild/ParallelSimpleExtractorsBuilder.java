@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import br.com.gencrawler.crawler.core.Crawler;
 import br.com.gencrawler.crawler.core.SimpleExtractor;
@@ -76,21 +75,14 @@ public class ParallelSimpleExtractorsBuilder implements ParallelCrawlerBuilder {
 	@SuppressWarnings("unchecked")
 	public <T extends Crawler> List<T> build() {
 		verify();
-		final ExecutorService executor = Executors.newFixedThreadPool(this.url.size());
+		final ExecutorService executor = Executors.newCachedThreadPool();
 		for (int i = 0; i < this.url.size(); i++) {
 			this.crawlers.add(new SimpleExtractor(this.url.get(i), this.paginators.get(i), this.finderProducts.get(i),
 					this.matchs.get(i)));
-			executor.execute(this.crawlers.get(i));
+			executor.submit(this.crawlers.get(i));
 		}
 		executor.shutdown();
-		
-		try{
-			executor.awaitTermination(this.crawlers.size() * 10, 
-				TimeUnit.SECONDS);
-		}catch(InterruptedException e){
-			e.printStackTrace();
-		}
-
+		while(!executor.isTerminated()) {}
 		return (List<T>) this.crawlers;
 	}
 }

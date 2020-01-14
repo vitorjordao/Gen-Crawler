@@ -51,7 +51,7 @@ public final class SimpleExtractor implements Crawler {
 	public final void runPagesLinks() {
 		if (!this.links.contains(this.url)) {
 			try {
-				final Document document = Jsoup.connect(this.url).timeout(30000).get();
+				final Document document = Jsoup.connect(this.url).timeout(120000).get();
 				final Elements otherLinks = document.select(this.paginator);
 
 				for (final Element page : otherLinks) {
