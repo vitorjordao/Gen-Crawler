@@ -34,6 +34,16 @@ public final class AjaxCollector implements Collector {
 		this.driver = new FirefoxDriver();
 	}
 
+	public AjaxCollector(final String url, final String find, final String match) {
+		this.items = new ArrayList<>();
+		this.driver = new FirefoxDriver();
+
+		this.url = url;
+		this.find = find;
+		this.match = match;
+	}
+
+	@Deprecated
 	public AjaxCollector(final String... filds) {
 		this.items = new ArrayList<>();
 		this.driver = new FirefoxDriver();

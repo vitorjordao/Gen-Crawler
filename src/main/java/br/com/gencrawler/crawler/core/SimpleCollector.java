@@ -25,6 +25,15 @@ public final class SimpleCollector implements Collector {
 		this.items = items;
 	}
 
+	public SimpleCollector(final String url, final String find, final String match) {
+		this.items = new ArrayList<>();
+
+		this.url = url;
+		this.find = find;
+		this.match = match;
+	}
+
+	@Deprecated
 	public SimpleCollector(final String... filds) {
 		this.items = new ArrayList<>();
 

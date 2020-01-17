@@ -32,6 +32,17 @@ public final class SimpleExtractor implements Crawler {
 		this.items = products;
 	}
 
+	public SimpleExtractor(final String url, final String paginator, final String linkFinded, final String match) {
+		this.links = new HashSet<>();
+		this.items = new ArrayList<>();
+
+		this.url = url;
+		this.paginator = paginator;
+		this.linkFinded = linkFinded;
+		this.match = match;
+	}
+
+	@Deprecated
 	public SimpleExtractor(final String... filds) {
 		this.links = new HashSet<>();
 		this.items = new ArrayList<>();
