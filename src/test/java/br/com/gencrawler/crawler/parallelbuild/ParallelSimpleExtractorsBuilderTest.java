@@ -3,12 +3,15 @@ package br.com.gencrawler.crawler.parallelbuild;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 
 import br.com.gencrawler.crawler.Helper;
 import br.com.gencrawler.crawler.core.SimpleExtractor;
 
+@Tag("NonAJAX")
 public class ParallelSimpleExtractorsBuilderTest {
 
 	private Helper helper = new Helper();

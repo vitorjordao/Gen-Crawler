@@ -1,11 +1,14 @@
 package br.com.gencrawler.crawler.build;
 
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 
 import br.com.gencrawler.crawler.Helper;
 import br.com.gencrawler.crawler.core.SimpleExtractor;
 
+@Tag("NonAJAX")
 public class SimpleExtractorBuilderTest {
 	private Helper helper = new Helper();
 

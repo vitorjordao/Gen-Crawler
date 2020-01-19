@@ -1,29 +1,32 @@
 package br.com.gencrawler.crawler.core;
 
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 
 import br.com.gencrawler.crawler.Helper;
 
+@Tag("NonAJAX")
 public class SimpleCollectorTest {
 
 	private Helper helper = new Helper();
 
 	@Test
 	public void testAllCrawler() {
-		final SimpleCollector bwc = new SimpleCollector();
-		bwc.runItem(helper.getAjaxFinder2(), helper.getMatch(),
+		final SimpleCollector collector = new SimpleCollector();
+		collector.runItem(helper.getAjaxFinder2(), helper.getMatch(),
 				helper.getAjaxUrl());
-		bwc.writeToConsole();
+		collector.writeToConsole();
 		
-		Assertions.assertTrue(bwc.getItems().size() > 0);
+		Assertions.assertTrue(collector.getItems().size() > 0);
 	}
 
 	@Test
 	public void errorOnURL() {
-		final SimpleCollector bwc = new SimpleCollector();
+		final SimpleCollector collector = new SimpleCollector();
 		Assertions.assertThrows(RuntimeException.class, () -> {
-			bwc.runItem(helper.getAjaxFinder2(), helper.getMatch(),
+			collector.runItem(helper.getAjaxFinder2(), helper.getMatch(),
 					"");
 		});
 	}

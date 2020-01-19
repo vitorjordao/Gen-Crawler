@@ -3,13 +3,16 @@ package br.com.gencrawler.crawler.parallelbuild;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 
 import br.com.gencrawler.crawler.Helper;
 import br.com.gencrawler.crawler.core.AjaxCollector;
 
+@Tag("AJAX")
 public class ParallelAjaxCollectorsBuilderTest {
 
 	private Helper helper = new Helper();

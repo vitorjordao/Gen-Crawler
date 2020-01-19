@@ -57,8 +57,6 @@ public final class SimpleCollector implements Collector {
 			final Elements itemsLinks = document.select(this.find);
 			for (final Element item : itemsLinks) {
 				if (item.text().matches(this.match)) {
-					System.out.println(item.attr("abs:href"));
-
 					this.items.add(item.text());
 					this.items.add(item.attr("abs:href"));
 				}

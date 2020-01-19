@@ -2,40 +2,56 @@ package br.com.gencrawler.crawler.core;
 
 import java.util.Set;
 
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 
 import br.com.gencrawler.crawler.Helper;
 
+@Tag("NonAJAX")
 public class SimpleExtractorTest {
 	
 	private Helper helper = new Helper();
 
 	@Test
 	public void testGetRunPagesLinks() {
-		final SimpleExtractor bwc = new SimpleExtractor();
-		bwc.runPagesLinks(helper.getUrl(),
+		final SimpleExtractor extractor = new SimpleExtractor();
+		extractor.runPagesLinks(helper.getUrl(),
 				helper.getPaginator());
-		final Set<String> links = bwc.getLinks();
+		final Set<String> links = extractor.getLinks();
 		Assertions.assertTrue(links.size() > 0);
 	}
 
 	@Test
-	public void testAllCrawler() {
-		final SimpleExtractor bwc = new SimpleExtractor();
-		bwc.runPagesLinks(helper.getUrl(),
+	public void testAllCrawlersExtractors() {
+		final SimpleExtractor extractor = new SimpleExtractor();
+		extractor.runPagesLinks(helper.getUrl(),
 				helper.getPaginator());
-		bwc.runItem(helper.getFinder(),
+		extractor.runItem(helper.getFinder(),
 				helper.getMatch(), helper.getUrl());
-		Assertions.assertTrue(bwc.getItems().size() > 0);
+		
+		Assertions.assertTrue(extractor.getItems().size() > 0);
+
+		final Set<String> links = extractor.getLinks();
+		Assertions.assertTrue(links.size() > 0);
+	}
+
+	@Test
+	public void testRunRotine() {
+		final SimpleExtractor extractor = 
+			new SimpleExtractor(helper.getUrl(),
+				helper.getPaginator(), helper.getFinder(), helper.getMatch());
+		extractor.run();
+		Assertions.assertTrue(extractor.getItems().size() > 0);
 	}
 	
 	@Test
 	public void errorOnURL() {
-		final SimpleExtractor bwc = new SimpleExtractor();
+		final SimpleExtractor extractor = new SimpleExtractor();
 		Assertions.assertThrows(RuntimeException.class,
 				() -> {
-					bwc.runPagesLinks("not work url", "a");
+					extractor.runPagesLinks("not work url", "a");
 				});
 	}
 

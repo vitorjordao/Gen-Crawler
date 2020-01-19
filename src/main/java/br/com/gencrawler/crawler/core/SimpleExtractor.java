@@ -66,9 +66,7 @@ public final class SimpleExtractor implements Crawler {
 				final Elements otherLinks = document.select(this.paginator);
 
 				for (final Element page : otherLinks) {
-					if (this.links.add(this.url)) {
-						System.out.println(this.url);
-					}
+					this.links.add(this.url);
 					runPagesLinks(page.attr("abs:href"), this.paginator);
 				}
 			} catch (final IOException e) {
@@ -95,8 +93,6 @@ public final class SimpleExtractor implements Crawler {
 				final Elements itemsLinks = document.select(this.linkFinded);
 				for (final Element item : itemsLinks) {
 					if (item.text().matches(this.match)) {
-						System.out.println(item.attr("abs:href"));
-
 						final ArrayList<String> temporary = new ArrayList<>();
 						temporary.add(item.text());
 						temporary.add(item.attr("abs:href"));
