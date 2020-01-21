@@ -54,10 +54,7 @@ public final class AjaxCollector implements Collector {
 	}
 
 	public void openBrowser() {
-		if(this.url == null || this.find == null || this.match == null
-			|| this.url.equals("") || this.find.equals("") || this.match.equals(""))
-			throw new RuntimeException("Peat all data");
-		this.driver.get(this.url);
+		this.driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	}
 	
 	public void closeBrowser() {
@@ -66,7 +63,11 @@ public final class AjaxCollector implements Collector {
 	
 	public void runBrowser() {
 		List<WebElement> elements;
-		this.driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		if(this.url == null || this.find == null || this.match == null
+			|| this.url.equals("") || this.find.equals("") || this.match.equals(""))
+			throw new RuntimeException("Peat all data");
+		
+		this.driver.get(this.url);
 		if(this.match.toLowerCase().equals("class"))
 			elements = this.driver.findElements(By.className(this.find));
 		else if(this.match.toLowerCase().equals("id"))
