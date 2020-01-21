@@ -76,6 +76,12 @@ public final class AjaxCollector implements Collector {
 		elements.forEach(element -> this.items.add(element.getText()));
 	}
 
+	public final void set(final String find, final String match, final String url) {
+		this.find = find;
+		this.match = match;
+		this.url = url;
+	}
+
 	@Override
 	public final void runItem() {
 		openBrowser();
