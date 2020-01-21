@@ -91,6 +91,13 @@ public final class AjaxCollector implements Collector {
 		runItem();
 	}
 
+	public final void runItem(final String find, final String match, final String url) {
+		this.find = find;
+		this.match = match;
+		this.url = url;
+		runItem();
+	}
+
 	public final void writeToConsole() {
 		this.items.parallelStream().forEach(a -> {
 			System.out.println("----");
@@ -107,5 +114,9 @@ public final class AjaxCollector implements Collector {
 	public List<String> getItems() { 
 		
 		return Collections.unmodifiableList(this.items);
+	}
+
+	public void clearItems() { 
+		this.items.clear();
 	}
 }
