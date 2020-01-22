@@ -27,6 +27,7 @@ public final class SimpleExtractor implements Crawler {
 		this.items = new ArrayList<>();
 	}
 
+	@Deprecated
 	public SimpleExtractor(final Set<String> links, final List<List<String>> products) {
 		this.links = links;
 		this.items = products;
@@ -108,6 +109,7 @@ public final class SimpleExtractor implements Crawler {
 	}
  
 	@Override
+	@Deprecated
 	public final void runItem(final String... filds) {
 		
 		this.url = filds[2];

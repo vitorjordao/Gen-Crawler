@@ -24,11 +24,13 @@ public final class AjaxCollector implements Collector {
 		this.driver = new FirefoxDriver();
 	}
 
+	@Deprecated
 	public AjaxCollector(final WebDriver driver) {
 		this.items = new ArrayList<>();
 		this.driver = driver;
 	}
 	
+	@Deprecated
 	public AjaxCollector(final List<String> items) {
 		this.items = items;
 		this.driver = new FirefoxDriver();
@@ -53,8 +55,8 @@ public final class AjaxCollector implements Collector {
 		this.match = filds[2];
 	}
 
-	public void openBrowser() {
-		this.driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+	public void openBrowser(final int await) {
+		this.driver.manage().timeouts().implicitlyWait(await, TimeUnit.SECONDS);
 	}
 	
 	public void closeBrowser() {
@@ -85,12 +87,13 @@ public final class AjaxCollector implements Collector {
 
 	@Override
 	public final void runItem() {
-		openBrowser();
+		openBrowser(2);
 		runBrowser();
 		closeBrowser();
 	}
 
 	@Override
+	@Deprecated
 	public final void runItem(final String... filds) {
 		this.find = filds[0];
 		this.match = filds[1];

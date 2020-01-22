@@ -21,6 +21,7 @@ public final class SimpleCollector implements Collector {
 		this.items = new ArrayList<>();
 	}
 	
+	@Deprecated
 	public SimpleCollector(final List<String> items) {
 		this.items = items;
 	}
