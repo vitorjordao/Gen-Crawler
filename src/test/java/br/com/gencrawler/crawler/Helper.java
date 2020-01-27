@@ -37,6 +37,6 @@ public class Helper{
     }
 
     public void setProperty() {
-        System.setProperty("webdriver.gecko.driver", "/home/v/path/geckodriver");
+        System.setProperty("webdriver.chrome.driver", "/home/v/path/chromedriver");
     }
 }

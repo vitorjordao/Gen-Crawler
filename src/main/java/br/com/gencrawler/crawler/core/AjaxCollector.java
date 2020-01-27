@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public final class AjaxCollector implements Collector {
 	private final List<String> items;
@@ -21,7 +21,7 @@ public final class AjaxCollector implements Collector {
 
 	public AjaxCollector() {
 		this.items = new ArrayList<>();
-		this.driver = new FirefoxDriver();
+		this.driver = new ChromeDriver();
 	}
 
 	@Deprecated
@@ -33,12 +33,12 @@ public final class AjaxCollector implements Collector {
 	@Deprecated
 	public AjaxCollector(final List<String> items) {
 		this.items = items;
-		this.driver = new FirefoxDriver();
+		this.driver = new ChromeDriver();
 	}
 
 	public AjaxCollector(final String url, final String find, final String match) {
 		this.items = new ArrayList<>();
-		this.driver = new FirefoxDriver();
+		this.driver = new ChromeDriver();
 
 		this.url = url;
 		this.find = find;
@@ -48,7 +48,7 @@ public final class AjaxCollector implements Collector {
 	@Deprecated
 	public AjaxCollector(final String... filds) {
 		this.items = new ArrayList<>();
-		this.driver = new FirefoxDriver();
+		this.driver = new ChromeDriver();
 
 		this.url = filds[0];
 		this.find = filds[1];
