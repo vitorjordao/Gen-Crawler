@@ -10,7 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public final class SimpleCollector implements Collector {
+public final class SimpleCollector {
 	private final List<String> items;
 
 	private String url;
@@ -19,11 +19,6 @@ public final class SimpleCollector implements Collector {
 
 	public SimpleCollector() {
 		this.items = new ArrayList<>();
-	}
-	
-	@Deprecated
-	public SimpleCollector(final List<String> items) {
-		this.items = items;
 	}
 
 	public SimpleCollector(final String url, final String find, final String match) {
@@ -34,47 +29,28 @@ public final class SimpleCollector implements Collector {
 		this.match = match;
 	}
 
-	@Deprecated
-	public SimpleCollector(final String... filds) {
-		this.items = new ArrayList<>();
-
-		this.url = filds[0];
-		this.find = filds[1];
-		this.match = filds[2];
-	}
-
 	public void verify() {
 		if (this.url == null || this.find == null || this.match == null
 			|| this.url.equals("") || this.find.equals("") || this.match.equals(""))
 			throw new RuntimeException("Peat all data");
 	}
 
-	@Override
-	public final void runItem() {
+	public final void run() {
 		verify();
 		Document document;
 		try {
 			document = Jsoup.connect(this.url).get();
-			final Elements itemsLinks = document.select(this.find);
-			for (final Element item : itemsLinks) {
-				if (item.text().matches(this.match)) {
-					this.items.add(item.text());
-					this.items.add(item.attr("abs:href"));
-				}
-			}
-		} catch (final IOException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} catch (final Exception e) {
-			throw new RuntimeException("No expected error - " + e.getMessage(), e);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
-	}
-
-	@Override
-	public final void runItem(final String... filds) {
-		this.find = filds[0];
-		this.match = filds[1];
-		this.url = filds[2];
-		runItem();
+		final Elements itemsLinks = document.select(this.find);
+		for (final Element item : itemsLinks) {
+			if (item.text().matches(this.match)) {
+				this.items.add(item.text());
+				this.items.add(item.attr("abs:href"));
+			}
+		}
 	}
 
 	public final void writeToConsole() {
@@ -84,12 +60,6 @@ public final class SimpleCollector implements Collector {
 		});
 	}
 
-	@Override
-	public void run() {
-		runItem();
-	}
-
-	@Override
 	public List<String> getItems() { 
 		
 		return Collections.unmodifiableList(this.items);

@@ -14,9 +14,9 @@ public class SimpleCollectorTest {
 
 	@Test
 	public void testAllCrawler() {
-		final SimpleCollector collector = new SimpleCollector();
-		collector.runItem(helper.getAjaxFinder2(), helper.getMatch(),
-				helper.getAjaxUrl());
+		final SimpleCollector collector = 
+			new SimpleCollector(helper.getUrl(), helper.getFinder(), helper.getMatch());
+		collector.run();
 		collector.writeToConsole();
 		
 		Assertions.assertTrue(collector.getItems().size() > 0);
@@ -24,10 +24,10 @@ public class SimpleCollectorTest {
 
 	@Test
 	public void errorOnURL() {
-		final SimpleCollector collector = new SimpleCollector();
+		final SimpleCollector collector = 
+			new SimpleCollector("", helper.getFinder(), helper.getMatch());
 		Assertions.assertThrows(RuntimeException.class, () -> {
-			collector.runItem(helper.getAjaxFinder2(), helper.getMatch(),
-					"");
+			collector.run();
 		});
 	}
 

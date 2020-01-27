@@ -4,15 +4,11 @@ public class Helper{
 
     // Non Ajax
     public String getUrl(){
-        return "https://www.americanas.com.br/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?ordenacao=topSelling&origem=omega&chave=brd_hs_dt_0_livros-6-ao-9_material-escolar18&pfm_carac=BLOCO%201&pfm_index=0&pfm_page=special&pfm_pos=contenttop3&pfm_type=vit_spacey";
-    }
-
-    public String getPaginator(){
-        return "a[href^=\"/categoria/livros/didaticos-e-educacao/ensino-fundamental-6o-ao-9o-ano?\"]";
+        return "https://www.americanas.com.br/produto/116802208/livro-geografia-espaco-e-vivencia-8o-ano?pfm_carac=Ensino%20Fundamental%20-%206%C2%BA%20ao%209%C2%BA%20ano&pfm_index=1&pfm_page=category&pfm_pos=grid&pfm_type=vit_product_grid";
     }
 
     public String getFinder(){
-        return "div[class^=\"product-grid-item\"] a[class^=\"Link-bwhjk3-2\"]";
+        return "span[class^=\"price__SalesPrice\"]";
     }
 
     public String getMatch(){
@@ -26,14 +22,6 @@ public class Helper{
 
     public String getAjaxFinder(){
         return "bf-price__best";
-    }
-
-    public String getAjaxFinder2(){
-        return "strong[class^=\"skuPrice\"]";
-    }
-
-    public String getAjaxMatch(){
-        return "^.*?(R$).*$";
     }
 
     public void setProperty() {

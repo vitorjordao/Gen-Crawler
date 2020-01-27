@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public final class AjaxCollector implements Collector {
+public final class AjaxCollector {
 	private final List<String> items;
 
 	private String url;
@@ -24,18 +24,6 @@ public final class AjaxCollector implements Collector {
 		this.driver = new ChromeDriver();
 	}
 
-	@Deprecated
-	public AjaxCollector(final WebDriver driver) {
-		this.items = new ArrayList<>();
-		this.driver = driver;
-	}
-	
-	@Deprecated
-	public AjaxCollector(final List<String> items) {
-		this.items = items;
-		this.driver = new ChromeDriver();
-	}
-
 	public AjaxCollector(final String url, final String find, final String match) {
 		this.items = new ArrayList<>();
 		this.driver = new ChromeDriver();
@@ -43,16 +31,6 @@ public final class AjaxCollector implements Collector {
 		this.url = url;
 		this.find = find;
 		this.match = match;
-	}
-
-	@Deprecated
-	public AjaxCollector(final String... filds) {
-		this.items = new ArrayList<>();
-		this.driver = new ChromeDriver();
-
-		this.url = filds[0];
-		this.find = filds[1];
-		this.match = filds[2];
 	}
 
 	public void openBrowser(final int await) {
@@ -70,9 +48,9 @@ public final class AjaxCollector implements Collector {
 			throw new RuntimeException("Peat all data");
 		
 		this.driver.get(this.url);
-		if(this.match.toLowerCase().equals("class"))
+		if(this.match.toLowerCase().contains("class"))
 			elements = this.driver.findElements(By.className(this.find));
-		else if(this.match.toLowerCase().equals("id"))
+		else if(this.match.toLowerCase().contains("id"))
 			elements = this.driver.findElements(By.id(this.find));
 		else
 			throw new RuntimeException("Invalid match error");
@@ -85,27 +63,17 @@ public final class AjaxCollector implements Collector {
 		this.url = url;
 	}
 
-	@Override
-	public final void runItem() {
+	public final void run() {
 		openBrowser(2);
 		runBrowser();
 		closeBrowser();
 	}
 
-	@Override
-	@Deprecated
-	public final void runItem(final String... filds) {
-		this.find = filds[0];
-		this.match = filds[1];
-		this.url = filds[2];
-		runItem();
-	}
-
-	public final void runItem(final String find, final String match, final String url) {
+	public final void run(final String find, final String match, final String url) {
 		this.find = find;
 		this.match = match;
 		this.url = url;
-		runItem();
+		run();
 	}
 
 	public final void writeToConsole() {
@@ -115,12 +83,6 @@ public final class AjaxCollector implements Collector {
 		});
 	}
 
-	@Override
-	public void run() {
-		runItem();
-	}
-
-	@Override
 	public List<String> getItems() { 
 		
 		return Collections.unmodifiableList(this.items);
