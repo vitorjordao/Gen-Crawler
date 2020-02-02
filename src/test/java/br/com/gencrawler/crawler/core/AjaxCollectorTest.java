@@ -23,9 +23,9 @@ public class AjaxCollectorTest {
 		final AjaxCollector collector = new AjaxCollector();
 		collector.run(helper.getAjaxFinder(), "class",
 				helper.getAjaxUrl());
-		collector.writeToConsole();
 		
 		Assertions.assertTrue(collector.getItems().size() > 0);
+		Assertions.assertTrue(collector.getURLs().size() > 0);
 	}
 
 	@Test

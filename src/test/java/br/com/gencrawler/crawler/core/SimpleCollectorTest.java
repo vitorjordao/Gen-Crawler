@@ -17,9 +17,9 @@ public class SimpleCollectorTest {
 		final SimpleCollector collector = 
 			new SimpleCollector(helper.getUrl(), helper.getFinder(), helper.getMatch());
 		collector.run();
-		collector.writeToConsole();
 		
 		Assertions.assertTrue(collector.getItems().size() > 0);
+		Assertions.assertTrue(collector.getURLs().size() > 0);
 	}
 
 	@Test
