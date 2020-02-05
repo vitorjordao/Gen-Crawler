@@ -21,7 +21,7 @@ public class AjaxCollectorTest {
 	@Test
 	public void testAllCrawler() {
 		final AjaxCollector collector = new AjaxCollector();
-		collector.run(helper.getAjaxFinder(), "class",
+		collector.run(helper.getAjaxFinder(), helper.getMatch(),
 				helper.getAjaxUrl());
 		
 		Assertions.assertTrue(collector.getItems().size() > 0);
@@ -32,8 +32,9 @@ public class AjaxCollectorTest {
 	public void errorOnURL() {
 		final AjaxCollector collector = new AjaxCollector();
 		Assertions.assertThrows(RuntimeException.class, () -> {
-			collector.run(helper.getAjaxFinder(), "class",
+			collector.run(helper.getAjaxFinder(), helper.getMatch(),
 					"");
+		collector.closeBrowser();
 		});
 	}
 

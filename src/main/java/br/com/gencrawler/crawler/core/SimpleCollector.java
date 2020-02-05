@@ -22,24 +22,24 @@ public final class SimpleCollector {
 	private Set<String> urlsOfThisSite = Set.of();
 
 	private String url;
-	private String find;
+	private String selector;
 	private String match;
 
 	public SimpleCollector() {
 		this.items = new ArrayList<>();
 	}
 
-	public SimpleCollector(final String url, final String find, final String match) {
+	public SimpleCollector(final String url, final String selector, final String match) {
 		this.items = new ArrayList<>();
 
 		this.url = url;
-		this.find = find;
+		this.selector = selector;
 		this.match = match;
 	}
 
 	public void verify() {
-		if (this.url == null || this.find == null || this.match == null
-			|| this.url.isBlank() || this.find.isBlank() || this.match.isBlank())
+		if (this.url == null || this.selector == null || this.match == null
+			|| this.url.isBlank() || this.selector.isBlank() || this.match.isBlank())
 			throw new RuntimeException("Peat all data");
 	}
 
@@ -53,7 +53,8 @@ public final class SimpleCollector {
 			throw new RuntimeException(e);
 		}
 
-		final Elements itemsLinks = document.select(this.find);
+		final Elements itemsLinks = document.select(this.selector);
+		document.outerHtml();
 
 		for (final Element item : itemsLinks) {
 			if (item.text().matches(this.match)) {

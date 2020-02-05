@@ -22,7 +22,7 @@ public final class AjaxCollector {
 	private Set<String> urlsOfThisSite = Set.of();
 
 	private String url;
-	private String find;
+	private String selector;
 	private String match;
 
 	private final WebDriver driver;
@@ -31,11 +31,11 @@ public final class AjaxCollector {
 		this.driver = new ChromeDriver();
 	}
 
-	public AjaxCollector(final String url, final String find, final String match) {
+	public AjaxCollector(final String url, final String selector, final String match) {
 		this.driver = new ChromeDriver();
 
 		this.url = url;
-		this.find = find;
+		this.selector = selector;
 		this.match = match;
 	}
 
@@ -58,22 +58,20 @@ public final class AjaxCollector {
 	 * After set "url", "find" and "match" fields
 	 */
 	public void runBrowser() {
-		if(this.url == null || this.find == null || this.match == null
-			|| this.url.isBlank() || this.find.isBlank() || this.match.isBlank())
-		throw new RuntimeException("Peat all data");
-		
-		List<WebElement> elements;
+		if(this.url == null || this.selector == null || this.match == null
+			|| this.url.isBlank() || this.selector.isBlank() || this.match.isBlank()){
+				this.driver.close();
+				throw new RuntimeException("Peat all data");
+			}
+			
 
 		this.driver.get(this.url);
-		if(this.match.toLowerCase().contains("class"))
-			elements = this.driver.findElements(By.className(this.find));
-		else if(this.match.toLowerCase().contains("id"))
-			elements = this.driver.findElements(By.id(this.find));
-		else
-			throw new RuntimeException("Invalid match error");
+
+		final List<WebElement> elements = this.driver.findElements(By.cssSelector(this.selector));
 		
 		this.items = elements.stream()
 			.map(element -> element.getText())
+			.filter(element -> element.matches(match))
 			.collect(Collectors.toList());
 
 		final String baseUrl = CommonLinks.baseUrl(driver.getCurrentUrl());
@@ -91,8 +89,8 @@ public final class AjaxCollector {
 	 * @param match ...
 	 * @param url is a url web page
 	 */
-	public final void set(final String find, final String match, final String url) {
-		this.find = find;
+	public final void set(final String selector, final String match, final String url) {
+		this.selector = selector;
 		this.match = match;
 		this.url = url;
 	}
@@ -103,8 +101,8 @@ public final class AjaxCollector {
 		closeBrowser();
 	}
 
-	public final void run(final String find, final String match, final String url) {
-		this.find = find;
+	public final void run(final String selector, final String match, final String url) {
+		this.selector = selector;
 		this.match = match;
 		this.url = url;
 		run();

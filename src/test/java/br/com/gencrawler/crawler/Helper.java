@@ -8,7 +8,7 @@ public class Helper{
     }
 
     public String getFinder(){
-        return "span[class^=\"price__SalesPrice\"]";
+        return ".price__SalesPrice-ej7lo8-2";
     }
 
     public String getMatch(){
@@ -21,7 +21,7 @@ public class Helper{
     }
 
     public String getAjaxFinder(){
-        return "bf-price__best";
+        return ".bf-price__best";
     }
 
     public void setProperty() {
