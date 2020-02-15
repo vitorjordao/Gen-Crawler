@@ -2,6 +2,7 @@ package br.com.gencrawler.crawler.core;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -18,8 +19,8 @@ import br.com.gencrawler.CommonLinks;
  * Simple Collector helps to crawl web pages with AJAX
 */
 public final class AjaxCollector {
-	private List<String> items = List.of();
-	private Set<String> urlsOfThisSite = Set.of();
+	private List<String> items = new ArrayList<>();
+	private Set<String> urlsOfThisSite = new HashSet<>();
 
 	private String url;
 	private String selector;
@@ -119,5 +120,6 @@ public final class AjaxCollector {
 
 	public void clearItems() { 
 		this.items.clear();
+		this.urlsOfThisSite.clear();
 	}
 }
