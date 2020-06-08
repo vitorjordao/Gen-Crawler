@@ -4,7 +4,7 @@ public class Helper{
 
     // Non Ajax
     public String getUrl(){
-        return "https://www.americanas.com.br/produto/116802208/livro-geografia-espaco-e-vivencia-8o-ano?pfm_carac=Ensino%20Fundamental%20-%206%C2%BA%20ao%209%C2%BA%20ano&pfm_index=1&pfm_page=category&pfm_pos=grid&pfm_type=vit_product_grid";
+        return "https://www.americanas.com.br/produto/122597474/10692-lego-classic-pecas-criativas?pfm_carac=lego&pfm_page=search&pfm_pos=grid&pfm_type=search_page";
     }
 
     public String getFinder(){
@@ -25,6 +25,6 @@ public class Helper{
     }
 
     public void setProperty() {
-        System.setProperty("webdriver.chrome.driver", "/home/v/path/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "./chromedriver");
     }
 }
