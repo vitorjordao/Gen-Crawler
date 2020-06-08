@@ -2,7 +2,7 @@
 
 This is a crawler project make in Java language
 
-[![Clojars Project](https://img.shields.io/clojars/v/gen-crawler-clj.svg)](https://clojars.org/gen-crawler-clj)
+[![Clojars Project](https://img.shields.io/clojars/v/br.com.gencrawler.crawler/gen-crawler.svg)](https://clojars.org/br.com.gencrawler.crawler/gen-crawler)
 
 ## How to start
 
@@ -17,7 +17,9 @@ final SimpleCollector collector = new SimpleCollector(<URL>, <FINDER>, <MATCHER>
 ```
 
 URL     = Crawled url page         = "https://www.americanas.com.br/produto/122597474/10692-lego-classic-pecas-criativas?pfm_carac=lego&pfm_page=search&pfm_pos=grid&pfm_type=search_page"
+
 FINDER  = CSS selector             = ".price__SalesPrice-ej7lo8-2"
+
 MATCHER = Regex applied in the tag = "^.*?().*$"
 
 #### Run crawler:
@@ -55,7 +57,9 @@ final AjaxCollector collector = new AjaxCollector(<URL>, <FINDER>, <MATCHER>);
 ```
 
 URL     = Crawled url page         = "https://www.americanas.com.br/produto/122597474/10692-lego-classic-pecas-criativas?pfm_carac=lego&pfm_page=search&pfm_pos=grid&pfm_type=search_page"
+
 FINDER  = CSS selector             = ".price__SalesPrice-ej7lo8-2"
+
 MATCHER = Regex applied in the tag = "^.*?().*$"
 
 #### Run crawler:
