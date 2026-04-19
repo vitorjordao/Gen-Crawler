@@ -1,0 +1,14 @@
+[
+  [
+    "br.com.gencrawler.core.interfaces.DataExtractor",
+    "br.com.gencrawler.core.extractor.web.JsoupWebExtractor"
+  ],
+  [
+    "br.com.gencrawler.core.interfaces.DataExtractor",
+    "br.com.gencrawler.core.extractor.web.PlaywrightWebExtractor"
+  ],
+  [
+    "br.com.gencrawler.core.interfaces.DataExtractor",
+    "br.com.gencrawler.core.extractor.telegram.TelegramExtractor"
+  ]
+]

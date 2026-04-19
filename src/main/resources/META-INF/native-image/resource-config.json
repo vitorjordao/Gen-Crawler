@@ -1,0 +1,15 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "application\\.yml"
+      },
+      {
+        "pattern": "application-.*\\.yml"
+      },
+      {
+        "pattern": "META-INF/services/.*"
+      }
+    ]
+  }
+}

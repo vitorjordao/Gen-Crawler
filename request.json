@@ -1,0 +1,1 @@
+﻿{"sourceType":"web","sourceUrl":"https://example.com","extractors":[{"fieldName":"title","selector":"h1","attribute":"text"}]}
